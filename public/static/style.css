@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, select, textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica, "PingFang SC", SCHeiti, "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  outline: 0;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  font-size: 12px;
+  line-height: 1.5;
+  background: #e9eaeb;
+  color: #2a282d;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-wrap {
+  background: #696AAD;
+  width: 100%;
+}
+
+.d-flex {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  align-items: center;
+  -webkit-box-align: center;
+}
+
+.top-nav {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  align-items: center;
+  height: 40px;
+  -webkit-box-align: center;
+  /*margin: 0 auto;*/
+  margin: 0 10px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.top-nav div.right {
+  position: absolute;
+  right: 0;
+}
+
+.top-nav div.group {
+  /*border: 1px dotted #fff;*/
+  display: flex;
+  border-radius: 4px;
+  background: #999;
+  margin-left: 20px;
+}
+
+.top-nav div.group span {
+  font-size: 12px;
+  color: #fff;
+  padding: 4px 10px;
+  font-weight: bold;
+  background: #b79951;
+  border-radius: 4px;
+  margin-right: 2px;
+}
+
+.top-nav a {
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  padding: 4px 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.top-nav a.active, .top-nav a:hover {
+  border-radius: 4px;
+  /*background: #b79951;*/
+  background: #8BC864;
+  color: #fff;
+}
+
+.top-nav a.logout {
+}
+
+.line {
+  width: 1px;
+  height: 16px;
+  border-right: 1px solid #fff;
+  margin-right: 5px;
+}
+
+.frame {
+  width: 100%;
+  height: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.code-wrap {
+  width: 100%;
+  height: 95%;
+  background: #e9eaeb;
+  justify-content: center;
+  -webkit-box-pack: center;
+}
+
+.login-stage {
+  padding-top: 42px;
+  padding-bottom: 40px;
+  text-align: center;
+  overflow: hidden;
+  width: 432px;
+  min-height: 366px;
+  margin-top: 28px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .06);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.loading {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 9999;
+  position: absolute;
+  left: 50%;
+  top: 50%
+}
+
+.shape {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape-1 {
+  background-color: #1875e5;
+  left: -5px;
+  animation: animationShape1 7s linear infinite;
+}
+
+.shape-2 {
+  background-color: #c5523f;
+  left: 15px;
+  animation: animationShape2 7s linear infinite;
+}
+
+.shape-3 {
+  background-color: #499255;
+  left: 35px;
+  animation: animationShape3 7s linear infinite;
+}
+
+.shape-4 {
+  background-color: #f2b736;
+  width: 30px;
+  height: 30px;
+  left: -40px;
+  background-color: transparent !important;
+  z-index: 2;
+  animation: animationShape4 7s linear infinite;
+}
+
+.shape-4 > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.shape-4 .shape-4-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fbbc05;
+  clip: rect(0 30px 15px 0);
+  transform: rotate(-30deg);
+  animation: animationShape4Top 0.4s ease infinite alternate;
+}
+
+.shape-4 .shape-4-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fbbc05;
+  clip: rect(15px 30px 30px 0);
+  transform: rotate(45deg);
+  animation: animationShape4Bottom 0.4s ease infinite alternate;
+}
+
+.shape-4 .shape-4-eye {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+@keyframes animationShape4Top {
+  0% {
+    transform: rotate(-30deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes animationShape4Bottom {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes animationShape1 {
+  0% {
+    opacity: 1;
+  }
+
+  17% {
+    opacity: 1;
+  }
+
+  19% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animationShape2 {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  22% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animationShape3 {
+  0% {
+    opacity: 1;
+  }
+
+  27% {
+    opacity: 1;
+  }
+
+  29% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  64% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animationShape4 {
+  0% {
+    left: -40px;
+    transform: rotateY(0);
+  }
+
+  45% {
+    left: 50px;
+    transform: rotateY(0);
+  }
+
+  50% {
+    left: 50px;
+    transform: rotateY(180deg);
+  }
+
+  95% {
+    left: -40px;
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    left: -40px;
+    transform: rotateY(0);
+  }
+}

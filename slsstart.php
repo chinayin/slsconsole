@@ -1,0 +1,35 @@
+<?php
+
+use SlsConsole\Cookie;
+use SlsConsole\Limits;
+use SlsConsole\SlsConfigs;
+
+require __DIR__ . '/base.php';
+
+defined('IS_LOGIN_PAGE') || define('IS_LOGIN_PAGE', false);
+const COOKIE_PERM_WEWORKID = 'sls_wework_id';
+// 企业微信ID
+$slsWeworkId = Cookie::get(COOKIE_PERM_WEWORKID);
+// for test
+//$slsWeworkId = '';
+define('SLS_WEWORK_ID', empty($slsWeworkId) ? null : $slsWeworkId);
+// 判断登录
+if (empty(SLS_WEWORK_ID) && !IS_LOGIN_PAGE) {
+    header("Location: login.php");
+    die('no login');
+}
+// 获取本人实际的权限
+$limits = new Limits();
+$permKeys = SLS_WEWORK_ID ? $limits->getPerms(SLS_WEWORK_ID) : [];
+$slsConfigs = (new SlsConfigs())->getConfigs();
+$permConfigs = [];
+foreach ($slsConfigs as $key => $cfg) {
+    if (in_array($key, $permKeys)) {
+        $permConfigs[$key] = $cfg;
+    }
+}
+// 拥有的权限
+define('SLS_PERM_CONFIGS', $permConfigs);
+// 权限分组
+$slsConfigsGroups = array_filter(array_unique(array_column($permConfigs, 'group')));
+define('SLS_PERM_CONFIGS_GROUPS', $slsConfigsGroups);

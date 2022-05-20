@@ -1,0 +1,16 @@
+{
+  "phplog": {
+    "name": "PHP日志",
+    "project": "k8s-dev",
+    "logstore": "phplog",
+    "group": "测试「dev」",
+    "options": {}
+  },
+  "nginxlog": {
+    "name": "Nginx日志",
+    "project": "k8s-dev",
+    "logstore": "nginx",
+    "group": "测试「dev」",
+    "options": {}
+  }
+}
