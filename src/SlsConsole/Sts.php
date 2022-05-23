@@ -20,12 +20,13 @@ class Sts
                 Env::get("$ns.access_key_secret")
             )->regionId('cn-beijing')->asDefaultClient();
         } catch (\Exception $e) {
+            var_dump($e->getMessage());
         }
     }
 
-    public function getRoleArn()
+    public function getRoleArn(): string
     {
-        return Env::get("{$this->ns}.role_arn");
+        return Env::get("{$this->ns}.role_arn", '');
     }
 
     public function assumeRole(

@@ -16,7 +16,6 @@ class Sls
         $sts = new Sts($suffix);
         $roleArn = $sts->getRoleArn();
         $roleSessionName = 'sls-console-session' . time();
-        var_dump($roleArn);
         $response = $sts->assumeRole($roleArn, $durationSeconds, $roleSessionName);
         if (empty($response)) {
             throw new \LogicException('sts.assumeRole fail');
