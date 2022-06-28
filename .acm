@@ -1,0 +1,4 @@
+data_id: slsconsole
+files:
+  - limits.json5
+  - slsconfigs.json5
