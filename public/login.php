@@ -16,8 +16,7 @@ $redirect_uri = \SlsConsole\Env::get('wework.redirect_uri');
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="no-siteapp" http-equiv="Cache-Control">
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="./static/style.css?v=20220520"/>
+    <link rel="stylesheet" href="./assets/style.css?v=20220520"/>
     <script src="//wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.7.js" type="text/javascript"></script>
 </head>
 <body>

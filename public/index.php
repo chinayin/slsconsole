@@ -45,8 +45,7 @@ $iframeHref = empty($tag) ? '' : "sls_redirect.php?tag=$tag";
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="./static/style.css?v=20220520"/>
+    <link rel="stylesheet" href="./assets/style.css?v=20220520"/>
 </head>
 <body>
 <div class="nav-wrap">
