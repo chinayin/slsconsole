@@ -9,15 +9,14 @@ $redirect_uri = \SlsConsole\Env::get('wework.redirect_uri');
 <!DOCTYPE html>
 <html lang="zh-cmn">
 <head>
-    <title>SLS Dashboard Login</title>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="no-siteapp" http-equiv="Cache-Control">
-    <link rel="stylesheet" href="./assets/style.css?v=20220520"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./assets/style.css?v=20220629"/>
     <script src="//wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.7.js" type="text/javascript"></script>
+    <title>SLS Dashboard Login</title>
 </head>
 <body>
 <div class="nav-wrap">

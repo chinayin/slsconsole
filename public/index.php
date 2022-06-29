@@ -39,13 +39,12 @@ $iframeHref = empty($tag) ? '' : "sls_redirect.php?tag=$tag";
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?php
-        echo $title; ?></title>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <link rel="stylesheet" href="./assets/style.css?v=20220520"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./assets/style.css?v=20220629"/>
+    <title><?php echo $title; ?></title>
 </head>
 <body>
 <div class="nav-wrap">
