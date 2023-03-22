@@ -1,31 +1,38 @@
 <?php
 
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace SlsConsole;
 
 class Limits
 {
     public static $map;
-    public static $file = ROOT_PATH . 'limits.json5';
+    public static string $file = ROOT_PATH . 'limits.yml';
 
     public function __construct()
     {
-        if (is_null(self::$map)) {
-            if (file_exists(self::$file)) {
-                self::$map = json5_decode(file_get_contents(self::$file), true);
-            }
+        if (is_null(self::$map) && file_exists(self::$file)) {
+            self::$map = yaml_parse_file(self::$file);
         }
     }
 
-    public function isPermission(string $user_id): bool
+    public function isPermission(string $userId): bool
     {
-        if (array_key_exists($user_id, self::$map ?? [])) {
+        if (array_key_exists($userId, self::$map ?? [])) {
             return true;
         }
         return false;
     }
 
-    public function getPerms(string $user_id): array
+    public function getPerms(string $userId): array
     {
-        return self::$map[$user_id] ?? [];
+        return self::$map[$userId] ?? [];
     }
 }

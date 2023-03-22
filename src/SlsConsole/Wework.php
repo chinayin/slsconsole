@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace SlsConsole;
 
 class Wework
 {
-
     /**
      * 获取用户信息
      *
@@ -79,6 +87,4 @@ class Wework
         }
         return $accessToken;
     }
-
 }
-

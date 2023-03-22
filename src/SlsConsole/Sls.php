@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace SlsConsole;
 
 class Sls
 {
-
     public function buildSigninUrl(string $projectName, string $logstoreName, array $options = []): string
     {
         $suffix = '';
@@ -64,11 +72,9 @@ class Sls
             . http_build_query($slsParams);
         // construct final url
         $loginUrl = Env::get('sls.login_url');
-        $signInUrl = $signInHost . "/federation?Action=Login"
+        return $signInHost . "/federation?Action=Login"
             . "&LoginUrl=" . urlencode($loginUrl)
             . "&Destination=" . urlencode($destination)
             . "&SigninToken=" . urlencode($signInToken);
-        return $signInUrl;
     }
-
 }

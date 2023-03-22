@@ -1,25 +1,29 @@
 <?php
-// 检测PHP环境
-if (version_compare(PHP_VERSION, '7.2', '<')) {
-    die('require PHP > 7.2 !');
-}
 
-//error_reporting(0);
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-const SLS_CONSOLE_VERSION = '2.0';
+const SLS_CONSOLE_VERSION = '2.1';
 const EXT = '.php';
 const DS = DIRECTORY_SEPARATOR;
 const IS_CLI = PHP_SAPI == 'cli';
 define('IS_WIN', strpos(PHP_OS, 'WIN') !== false);
-defined('ENV_PREFIX') or define('ENV_PREFIX', 'PHP_');
-defined('ROOT_PATH') or define('ROOT_PATH', __DIR__ . DS);
-defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS);
-defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
-defined('LOG_PATH') or define('LOG_PATH', RUNTIME_PATH . 'log' . DS);
+defined('ENV_PREFIX') or define('ENV_PREFIX', 'PHP_');  //NOSONAR
+defined('ROOT_PATH') or define('ROOT_PATH', __DIR__ . DS);  //NOSONAR
+defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS); //NOSONAR
+defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);  //NOSONAR
+defined('LOG_PATH') or define('LOG_PATH', RUNTIME_PATH . 'log' . DS);   //NOSONAR
 // 修复json_encode时精度问题
 ini_set('serialize_precision', -1);
 // 载入vendor
-require ROOT_PATH . 'vendor/autoload.php';
+require_once ROOT_PATH . 'vendor/autoload.php';  //NOSONAR
 // 加载环境变量配置文件
 if (is_file(ROOT_PATH . '.env')) {
     $env = parse_ini_file(ROOT_PATH . '.env', true);

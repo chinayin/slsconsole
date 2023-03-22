@@ -1,0 +1,14 @@
+---
+phplog:
+  name: "PHP日志"
+  group: "测试「dev」"
+  project: k8s-dev
+  logstore: phplog
+  options: []
+nginxlog:
+  name: "Nginx日志"
+  group: "测试「dev」"
+  project: k8s-dev
+  logstore: nginx
+  options: []
+...

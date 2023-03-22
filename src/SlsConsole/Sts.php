@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace SlsConsole;
 
 use AlibabaCloud\Client\AlibabaCloud;
@@ -33,9 +42,11 @@ class Sts
         string $roleArn,
         int $durationSeconds = 3600,
         string $roleSessionName = '',
-        string $policy = ''
-    ) {
+        string $policy = '' //NOSONAR
+    )
+    {
         try {
+            // phpstan:ignore next-line
             $response = AlibabaCloud::sts()->V20150401()->assumeRole()
                 ->withDurationSeconds($durationSeconds)
                 ->withRoleArn($roleArn)

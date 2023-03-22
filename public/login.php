@@ -1,7 +1,7 @@
 <?php
 
 const IS_LOGIN_PAGE = true;
-require __DIR__ . '/../slsstart.php';
+require_once __DIR__ . '/../slsstart.php';  //NOSONAR
 $corpid = \SlsConsole\Env::get('wework.corpid');
 $agentid = \SlsConsole\Env::get('wework.agentid');
 $redirect_uri = \SlsConsole\Env::get('wework.redirect_uri');

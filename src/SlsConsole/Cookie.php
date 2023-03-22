@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace SlsConsole;
 
 class Cookie
@@ -7,7 +16,7 @@ class Cookie
     /**
      * @var array cookie 设置参数
      */
-    protected static $config = [
+    protected static array $config = [
         'prefix' => '', // cookie 名称前缀
         'expire' => 0, // cookie 保存时间
         'path' => '/', // cookie 保存路径
@@ -20,7 +29,7 @@ class Cookie
     /**
      * @var bool 是否完成初始化了
      */
-    protected static $init;
+    protected static bool $init = false;
 
     /**
      * Cookie初始化
@@ -33,14 +42,14 @@ class Cookie
      */
     public static function init(array $config = []): void
     {
-        if (empty($config)) {
-//            $config = Config::get('cookie');
+        if (empty($config)) {  //NOSONAR
+//            $config = Config::get('cookie');  //NOSONAR
         }
 
         self::$config = array_merge(self::$config, array_change_key_case($config));
 
         if (!empty(self::$config['httponly'])) {
-            ini_set('session.cookie_httponly', 1);
+            ini_set('session.cookie_httponly', '1');
         }
 
         self::$init = true;
@@ -77,7 +86,7 @@ class Cookie
      */
     public static function set($name, $value = '', $option = null)
     {
-        !isset(self::$init) && self::init();
+        !self::$init && self::init();
 
         // 参数设置(会覆盖黙认设置)
         if (!is_null($option)) {
@@ -153,7 +162,7 @@ class Cookie
      */
     public static function has($name, $prefix = null)
     {
-        !isset(self::$init) && self::init();
+        !self::$init && self::init();
 
         $prefix = !is_null($prefix) ? $prefix : self::$config['prefix'];
 
@@ -170,9 +179,9 @@ class Cookie
      *
      * @return mixed
      */
-    public static function get($name = '', $prefix = null)
+    public static function get($name = '', $prefix = null)  //NOSONAR
     {
-        !isset(self::$init) && self::init();
+        !self::$init && self::init();
 
         $prefix = !is_null($prefix) ? $prefix : self::$config['prefix'];
         $key = $prefix . $name;
@@ -216,7 +225,7 @@ class Cookie
      */
     public static function delete($name, $prefix = null)
     {
-        !isset(self::$init) && self::init();
+        !self::$init && self::init();
 
         $config = self::$config;
         $prefix = !is_null($prefix) ? $prefix : $config['prefix'];
@@ -253,7 +262,7 @@ class Cookie
             return;
         }
 
-        !isset(self::$init) && self::init();
+        !self::$init && self::init();
 
         // 要删除的 cookie 前缀，不指定则删除 config 设置的指定前缀
         $config = self::$config;
@@ -291,7 +300,7 @@ class Cookie
      *
      * @return void
      */
-    protected static function jsonFormatProtect(&$val, $key, $type = 'encode')
+    protected static function jsonFormatProtect(&$val, $key, $type = 'encode')  //NOSONAR
     {
         if (!empty($val) && true !== $val) {
             $val = 'decode' == $type ? urldecode($val) : urlencode($val);

@@ -19,6 +19,7 @@
     "php": ">=7.4",
     "ext-curl": "*",
     "ext-json": "*",
+    "ext-yaml": "*",
     "alibabacloud/sdk": "^1.0",
     "colinodell/json5": "^2.2",
     "sentry/sdk": "^3.0"
@@ -47,11 +48,11 @@
   "scripts": {
     "test": "vendor/bin/phpunit",
     "test-ci": "vendor/bin/phpunit --coverage-text",
-    "php-cs-fixer": "vendor/bin/php-cs-fixer fix -v",
-    "phpstan": "vendor/bin/phpstan analyse",
+    "lint": "vendor/bin/php-cs-fixer fix -v",
+    "analyse": "vendor/bin/phpstan analyse --memory-limit=-1",
     "travis": [
-      "composer php-cs-fixer",
-      "composer phpstan"
+      "composer lint",
+      "composer analyse"
     ]
   }
 }

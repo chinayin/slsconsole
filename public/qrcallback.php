@@ -1,12 +1,22 @@
 <?php
-require __DIR__ . '/../base.php';
+
+/*
+ * This file is part of the SlsConsole package.
+ *
+ * @link   https://github.com/chinayin/slsconsole
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+require_once __DIR__ . '/../base.php';  //NOSONAR
 define('COOKIE_PERM_WEWORKID', 'sls_wework_id');
 
 $code = $_GET['code'] ?? '';
 $state = $_GET['state'] ?? '';
 $appid = $_GET['appid'] ?? '';
 // 验证state
-list($source, $timestamp, $hash) = explode('^', $state);
+[$source, $timestamp, $hash] = explode('^', $state);
 if (empty($source) || empty($timestamp) || empty($hash)) {
     die('source | timestamp | hash is empty');
 } elseif (md5(implode('^', [$source, $timestamp])) !== $hash) {
