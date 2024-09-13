@@ -124,12 +124,86 @@ body, html {
   padding-bottom: 40px;
   text-align: center;
   overflow: hidden;
-  width: 432px;
+  width: 732px;
   min-height: 366px;
   margin-top: 28px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .06);
   background-color: #fff;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-item label {
+  display: block;
+}
+
+.login-item {
+  width: 50%;
+  height: 380px;
+}
+
+.login-item:not(:first-child) {
+  border-left: 1px solid #e9eaeb;
+}
+
+.login-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.login-item input {
+  flex: 1;
+  font-size: 16px;
+  width: 250px;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid #999;
+  margin-bottom: 16px;
+  padding: 5px 15px;
+}
+
+.login-item button {
+  height: 48px;
+  background: #696AAD;
+  /*background: #ff5a5f;*/
+  color: #fff;
+  opacity: 1;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 280px;
+  border: none;
+  margin-top: 10px;
+}
+
+.login-item p.title {
+  position: absolute;
+  display: block;
+  top: 20px;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+  line-height: 120%;
+  height: 24px;
+  width: 280px;
+  text-align: center;
+}
+
+.login-item p.error {
+  display: block;
+  font-size: 18px;
+  color: #ff0000;
+  font-weight: 600;
+  line-height: 120%;
+  height: 24px;
+  width: 280px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .loading {

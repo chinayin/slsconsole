@@ -10,17 +10,17 @@
  */
 
 use SlsConsole\Cookie;
+use SlsConsole\Env;
 use SlsConsole\Limits;
 use SlsConsole\SlsConfigs;
 
 require_once __DIR__ . '/base.php';     //NOSONAR
 
 defined('IS_LOGIN_PAGE') || define('IS_LOGIN_PAGE', false);
-const COOKIE_PERM_WEWORKID = 'sls_wework_id';
+define("HAS_SECURITY_LDAP", (bool)Env::get('ldap.dsn'));
+define('COOKIE_PERM_WEWORKID', 'sls_wework_id');
 // 企业微信ID
 $slsWeworkId = Cookie::get(COOKIE_PERM_WEWORKID);
-// for test
-//$slsWeworkId = '';
 define('SLS_WEWORK_ID', empty($slsWeworkId) ? null : $slsWeworkId);
 // 判断登录
 if (empty(SLS_WEWORK_ID) && !IS_LOGIN_PAGE) {

@@ -22,7 +22,8 @@
     "ext-yaml": "*",
     "alibabacloud/sdk": "^1.0",
     "colinodell/json5": "^2.2",
-    "sentry/sdk": "^3.0"
+    "sentry/sdk": "^3.0",
+    "symfony/ldap": "^5.4"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.0",
@@ -43,7 +44,10 @@
   "config": {
     "sort-packages": true,
     "preferred-install": "dist",
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
   "scripts": {
     "test": "vendor/bin/phpunit",
