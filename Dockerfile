@@ -14,4 +14,5 @@ RUN set -eu \
   && php --ri ldap \
   && rm -rf html \
   && ln -s /var/www/public /var/www/html \
+  && composer install --no-dev --no-interaction --no-progress --optimize-autoloader \
   && ls -al .
