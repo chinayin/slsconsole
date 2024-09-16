@@ -12,7 +12,7 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          echo "repository=${GITHUB_ACTOR}/sls-dashboard" >> $GITHUB_OUTPUT
+          echo "repository=chinayin/sls-dashboard" >> $GITHUB_OUTPUT
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
         with:

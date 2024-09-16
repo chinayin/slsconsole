@@ -14,7 +14,7 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          echo "repository=${GITHUB_ACTOR}/sls-dashboard" >> $GITHUB_OUTPUT
+          echo "repository=chinayin/sls-dashboard" >> $GITHUB_OUTPUT
           echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
