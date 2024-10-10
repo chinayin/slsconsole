@@ -14,3 +14,5 @@ phpdoc.xml
 phpunit.xml
 .phpunit.result.cache
 .env
+limits.yml.local
+slsconfigs.yml.local

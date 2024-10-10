@@ -3,8 +3,6 @@ on:
   push:
     tags:
       - 'v*'
-  schedule:
-    - cron: 0 4 * * *
 jobs:
   build:
     runs-on: ubuntu-latest

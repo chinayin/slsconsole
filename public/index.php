@@ -43,7 +43,7 @@ $iframeHref = empty($tag) ? '' : "sls_redirect.php?tag=$tag";
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <link rel="stylesheet" href="./assets/style.css?v=20220629"/>
+    <link rel="stylesheet" href="./assets/style.css?v=<?php echo SLS_CONSOLE_VERSION; ?>"/>
     <title><?php
         echo $title; ?></title>
 </head>

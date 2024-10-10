@@ -11,54 +11,49 @@
 
 namespace SlsConsole;
 
-use AlibabaCloud\Client\AlibabaCloud;
-use AlibabaCloud\Client\Exception\ClientException;
-use AlibabaCloud\Client\Exception\ServerException;
+use AlibabaCloud\SDK\Sts\V20150401\Models\AssumeRoleRequest;
+use Darabonba\OpenApi\Models\Config;
 
 class Sts
 {
-    private $ns;
+    private string $ns;
+    private \AlibabaCloud\SDK\Sts\V20150401\Sts $client;
 
     public function __construct($suffix = '')
     {
         $ns = 'sls' . (empty($suffix) ? '' : "_$suffix");
         $this->ns = $ns;
-        try {
-            AlibabaCloud::accessKeyClient(
-                Env::get("$ns.access_key_id"),
-                Env::get("$ns.access_key_secret")
-            )->regionId('cn-beijing')->asDefaultClient();
-        } catch (\Exception $e) {
-            var_dump($e->getMessage());
-        }
+        $config = new Config([
+            'accessKeyId' => $this->getEnvValue('access_key_id'),
+            'accessKeySecret' => $this->getEnvValue('access_key_secret'),
+            'regionId' => 'cn-beijing'
+        ]);
+        $this->client = new \AlibabaCloud\SDK\Sts\V20150401\Sts($config);
+    }
+
+    private function getEnvValue(string $key)
+    {
+        return Env::get("{$this->ns}.{$key}");
     }
 
     public function getRoleArn(): string
     {
-        return Env::get("{$this->ns}.role_arn", '');
+        return $this->getEnvValue("role_arn");
     }
 
-    public function assumeRole(
-        string $roleArn,
-        int $durationSeconds = 3600,
-        string $roleSessionName = '',
-        string $policy = '' //NOSONAR
-    )
+    /**
+     * @url https://api.aliyun.com/api/Sts/2015-04-01/AssumeRole?RegionId=cn-beijing
+     */
+    public function assumeRole(int $durationSeconds = 3600): array
     {
-        try {
-            // phpstan:ignore next-line
-            $response = AlibabaCloud::sts()->V20150401()->assumeRole()
-                ->withDurationSeconds($durationSeconds)
-                ->withRoleArn($roleArn)
-                ->withRoleSessionName($roleSessionName)
-//                ->withPolicy($policy)
-                ->request();
-            return $response->toArray();
-        } catch (ServerException $e) {
-            var_dump($e->getErrorMessage());
-        } catch (ClientException $e) {
-            var_dump($e->getErrorMessage());
-        }
-        return false;
+        $assumeRoleRequest = new AssumeRoleRequest();
+        $assumeRoleRequest->durationSeconds = $durationSeconds;
+        $assumeRoleRequest->roleArn = $this->getRoleArn();
+        $roleSessionName = 'sls-console-session' . time();
+        $assumeRoleRequest->roleSessionName = $roleSessionName;
+        $response = $this->client->assumeRole($assumeRoleRequest);
+        return $response->body->toMap();
     }
+
+
 }

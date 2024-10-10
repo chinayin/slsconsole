@@ -20,8 +20,8 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-yaml": "*",
-    "alibabacloud/sdk": "^1.0",
-    "colinodell/json5": "^2.2",
+    "alibabacloud/sls-20201230": "^4.5",
+    "alibabacloud/sts-20150401": "^1.1",
     "sentry/sdk": "^3.0",
     "symfony/ldap": "^5.4"
   },

@@ -95,6 +95,10 @@ body, html {
 .top-nav a.logout {
 }
 
+.top-nav small {
+  font-size: 0.6em
+}
+
 .line {
   width: 1px;
   height: 16px;

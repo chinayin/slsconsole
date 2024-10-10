@@ -18,9 +18,9 @@ $appid = $_GET['appid'] ?? '';
 // 验证state
 [$source, $timestamp, $hash] = explode('^', $state);
 if (empty($source) || empty($timestamp) || empty($hash)) {
-    die('source | timestamp | hash is empty');
+    die('ERROR: source | timestamp | hash is empty');
 } elseif (md5(implode('^', [$source, $timestamp])) !== $hash) {
-    die('decrypt fail');
+    die('ERROR: decrypt fail');
 }
 //
 try {
@@ -30,7 +30,7 @@ try {
     // 判断权限
     $limits = new \SlsConsole\Limits();
     if (!$limits->isPermission($user_id)) {
-        die("no permission, user_id = $user_id");
+        die("ERROR: no permission, user_id = $user_id");
     }
     $perms = $limits->getPerms($user_id);
     //
@@ -38,7 +38,7 @@ try {
         \SlsConsole\Cookie::set(COOKIE_PERM_WEWORKID, $user_id);
         header("Location: index.php");
     } else {
-        die("wwqrcode login fail, user_id = $user_id");
+        die("ERROR: qrcode login fail, user_id = $user_id");
     }
 } catch (\Exception $ex) {
     die($ex->getMessage());

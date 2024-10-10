@@ -25,7 +25,7 @@ define('SLS_WEWORK_ID', empty($slsWeworkId) ? null : $slsWeworkId);
 // 判断登录
 if (empty(SLS_WEWORK_ID) && !IS_LOGIN_PAGE) {
     header("Location: login.php");
-    die('no login');
+    die('ERROR: no login');
 }
 // 获取本人实际的权限
 $limits = new Limits();

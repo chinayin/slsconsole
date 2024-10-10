@@ -65,14 +65,14 @@ html:
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-    <link rel="stylesheet" href="./assets/style.css?v=20240913"/>
+    <link rel="stylesheet" href="./assets/style.css?v=<?php echo SLS_CONSOLE_VERSION; ?>"/>
     <script src="//wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.7.js" type="text/javascript"></script>
     <title>SLS Dashboard Login</title>
 </head>
 <body>
 <div class="nav-wrap">
     <div class="top-nav">
-        <p class="logo">SLS Dashboard</p>
+        <p class="logo">SLS Dashboard <small>v<?php echo SLS_CONSOLE_VERSION; ?></small></p>
     </div>
 </div>
 <?php
