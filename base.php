@@ -10,7 +10,7 @@
  */
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-const SLS_CONSOLE_VERSION = '3.1';
+const SLS_CONSOLE_VERSION = '3.1.1';
 const EXT = '.php';
 const DS = DIRECTORY_SEPARATOR;
 const IS_CLI = PHP_SAPI == 'cli';
