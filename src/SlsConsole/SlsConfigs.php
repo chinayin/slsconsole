@@ -20,10 +20,8 @@ class SlsConfigs
     {
         if (is_null(self::$map) && file_exists(self::$file)) {
             self::$map =
-                array_merge(
-                    yaml_parse_file(self::$file),
-                    file_exists(self::$file . '.local') ? yaml_parse_file(self::$file . '.local') : []
-                );
+                yaml_parse_file(self::$file) +
+                (file_exists(self::$file . '.local') ? yaml_parse_file(self::$file . '.local') : []);
         }
     }
 
