@@ -66,7 +66,7 @@ html:
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <link rel="stylesheet" href="./assets/style.css?v=<?php echo SLS_CONSOLE_VERSION; ?>"/>
-    <script src="//wwcdn.weixin.qq.com/node/wework/wwopen/js/wwLogin-1.2.7.js" type="text/javascript"></script>
+    <script src="//wwcdn.weixin.qq.com/node/open/js/wecom-jssdk-2.0.2.js" type="text/javascript"></script>
     <title>SLS Dashboard Login</title>
 </head>
 <body>
@@ -111,15 +111,22 @@ $state = $string . '^' . $hash;
     </div>
 </div>
 <script>
-    var wwLogin = new WwLogin({
-        "id": "wwqr",
-        "appid": "<?php echo $corpid;?>",
-        "agentid": "<?php echo $agentid;?>",
-        "redirect_uri": "<?php echo $redirect_uri;?>",
-        "state": "<?php echo $state;?>",
-        "href": "",
-        "lang": "",
-    });
+    const wwLogin = ww.createWWLoginPanel({
+        el: '#wwqr',
+        params: {
+            login_type: 'CorpApp',
+            appid: "<?php echo $corpid;?>",
+            agentid: "<?php echo $agentid;?>",
+            redirect_uri: "<?php echo $redirect_uri;?>",
+            redirect_type: 'top',
+            state : "<?php echo $state;?>",
+            panel_size:'small'
+        },
+        onCheckWeComLogin({ isWeComLogin }) {},
+        onLoginSuccess({ code }) {},
+        onLoginFail(err) {},
+    })
+    
 </script>
 </body>
 </html>
